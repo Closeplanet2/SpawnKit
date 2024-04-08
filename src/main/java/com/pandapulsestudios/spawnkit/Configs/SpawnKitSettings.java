@@ -64,7 +64,10 @@ public class SpawnKitSettings implements PulseConfig, Listener {
         var player = event.getPlayer();
         if(!SpawnKit.SpawnKitPermissions.DoesPlayerHavePermission(SKPermission.GET_SPAWN_KIT, event.getPlayer(), true)) return;
         if(clearPlayerInventory) player.getInventory().clear();
-        for(var item : spawnKit.GetLiveContents()) player.getInventory().addItem(item);
+        for(var item : spawnKit.GetLiveContents()){
+            if(item == null) continue;
+            player.getInventory().addItem(item);
+        }
         SpawnKit.SpawnKitMessages.SendMessageToPlayer(SKMessage.GotSpawnKit, player);
     }
 }
