@@ -49,10 +49,6 @@ public class SpawnKitMessages implements PulseConfig {
 
     public SaveableHashmap<SKMessage, String> messages = new SaveableHashmap<>(SaveableType.CONFIG, SKMessage.class, String.class);
 
-    public SpawnKitMessages(boolean debugLoad){
-        ConfigAPI.Load(this, debugLoad);
-    }
-
     public void SendMessageToPlayer(SKMessage skMessage, Player player){
         if(player == null || skMessage == null) return;
         var storedMessage = messages.hashMap.getOrDefault(skMessage, skMessage.message);

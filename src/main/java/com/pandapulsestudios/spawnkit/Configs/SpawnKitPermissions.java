@@ -49,10 +49,6 @@ public class SpawnKitPermissions implements PulseConfig {
 
     public SaveableHashmap<SKPermission, String> permissions = new SaveableHashmap<>(SaveableType.CONFIG, SKPermission.class, String.class);
 
-    public SpawnKitPermissions(boolean debugLoad){
-        ConfigAPI.Load(this, debugLoad);
-    }
-
     public boolean DoesPlayerHavePermission(SKPermission skPermission, Player player, boolean sendError){
         if(skPermission == null || player == null) return false;
         var storedPermission = permissions.hashMap.getOrDefault(skPermission, skPermission.permission);

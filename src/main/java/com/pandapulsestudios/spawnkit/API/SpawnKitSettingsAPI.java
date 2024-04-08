@@ -1,7 +1,7 @@
 package com.pandapulsestudios.spawnkit.API;
 
 import com.pandapulsestudios.pulseconfig.APIS.ConfigAPI;
-import com.pandapulsestudios.pulseconfig.Objects.Savable.SaveableInventory;
+import com.pandapulsestudios.pulseconfig.Objects.Savable.SaveAbleInventoryConfig;
 import com.pandapulsestudios.spawnkit.Configs.SpawnKitSettings;
 import com.pandapulsestudios.spawnkit.SpawnKit;
 import org.bukkit.entity.Player;
@@ -20,7 +20,7 @@ public class SpawnKitSettingsAPI {
         if(SpawnKit.SpawnKitSettings.spawnKits.hashMap.containsKey(spawnKitName) || !IsSystemEnabled()) return false;
         var inventoryName = SpawnKit.SpawnKitSettings.inventoryName;
         var inventorySize = SpawnKit.SpawnKitSettings.inventorySize;
-        var spawnKit = new SaveableInventory(inventoryName, inventorySize);
+        var spawnKit = new SaveAbleInventoryConfig(inventoryName, inventorySize);
         if(player != null) spawnKit.OpenInventory(player);
         SpawnKit.SpawnKitSettings.spawnKits.hashMap.put(spawnKitName, spawnKit);
         if(setCurrent) SpawnKit.SpawnKitSettings.currentSpawnKit = spawnKitName;

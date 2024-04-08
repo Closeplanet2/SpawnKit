@@ -3,11 +3,15 @@ package com.pandapulsestudios.spawnkit.Configs;
 import com.pandapulsestudios.pulseconfig.APIS.ConfigAPI;
 import com.pandapulsestudios.pulseconfig.Enums.SaveableType;
 import com.pandapulsestudios.pulseconfig.Interfaces.Config.PulseConfig;
+import com.pandapulsestudios.pulseconfig.Interfaces.PulseClass;
+import com.pandapulsestudios.pulseconfig.Objects.Savable.SaveAbleInventoryConfig;
 import com.pandapulsestudios.pulseconfig.Objects.Savable.SaveableHashmap;
-import com.pandapulsestudios.pulseconfig.Objects.Savable.SaveableInventory;
+import com.pandapulsestudios.pulsecore.Java.ClassAPI;
 import com.pandapulsestudios.spawnkit.Enum.SKMessage;
 import com.pandapulsestudios.spawnkit.Enum.SKPermission;
 import com.pandapulsestudios.spawnkit.SpawnKit;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -37,10 +41,10 @@ public class SpawnKitSettings implements PulseConfig, Listener {
     public String currentSpawnKit = "";
     public String inventoryName = "Spawn Kit";
     public int inventorySize = 54;
-    public SaveableHashmap<String, SaveableInventory> spawnKits = new SaveableHashmap<>(SaveableType.CONFIG, String.class, SaveableInventory.class);
+    public SaveableHashmap<String, SaveAbleInventoryConfig> spawnKits = new SaveableHashmap<>(SaveableType.CONFIG, String.class, SaveAbleInventoryConfig.class);
 
-    public SpawnKitSettings(boolean debugLoad){
-        ConfigAPI.Load(this, debugLoad);
+    public SpawnKitSettings(){
+        ClassAPI.RegisterListener(SpawnKit.SpawnKit, this);
     }
 
     public List<String> ReturnAllSpawnKitNames(String refineName, boolean caseSens){

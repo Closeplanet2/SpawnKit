@@ -49,10 +49,6 @@ public class SpawnKitMenu implements PulseConfig {
 
     public SaveableHashmap<SKMenu, String[]> menus = new SaveableHashmap<>(SaveableType.CONFIG, SKMenu.class, String[].class);
 
-    public SpawnKitMenu(boolean debugLoad){
-        ConfigAPI.Load(this, debugLoad);
-    }
-
     public void DisplayMenuToPlayer(SKMenu skMenu, Player player){
         if(player == null || skMenu == null) return;
         if(!SpawnKit.SpawnKitPermissions.DoesPlayerHavePermission(skMenu.skPermission, player, true)) return;
