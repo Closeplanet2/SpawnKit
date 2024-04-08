@@ -98,6 +98,9 @@ public class SpawnKitCommands extends PlayerCommand {
     @PCTab(pos = 1, type = TabType.Information_From_Function, data = "CurrentSpawnKitNames")
     public void CurrentSpawnKit(CraftPlayer adin, String... spawnKitName){
         if(!SpawnKit.SpawnKitPermissions.DoesPlayerHavePermission(SKPermission.CURRENT_SPAWN_KIT, adin, true)) return;
+        var currentState = SpawnKitSettingsAPI.CurrentSpawnKit(SpawnKit.BuildString(spawnKitName, ' '));
+        var storedMessage = currentState ? SKMessage.SetCurrentSpawnKit : SKMessage.CannotFindSpawnKitWithName;
+        SpawnKit.SpawnKitMessages.SendMessageToPlayer(storedMessage, adin);
     }
 
     @PCMethodData
